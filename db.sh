@@ -52,5 +52,5 @@ then
     mysql_secure_installation --set-root-pass ExpenseApp@1
     VALIDATE $? " root pw"
 else
-    echo " root pw installed"
+    echo -e " root pw installed  ...... $Y SKIPPING $N"
 fi

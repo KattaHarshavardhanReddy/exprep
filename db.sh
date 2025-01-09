@@ -44,7 +44,7 @@ VALIDATE $? "enabling mysql"
 systemctl start mysqld &>>$LOG_FILE_NAME
 VALIDATE $? "starting mysql"
 
-mysql -h mysql.katta.blog -u ec2-user -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE_NAME
+mysql -h mysql.katta.blog -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE_NAME
 
 if [ $? -ne 0 ]
 then

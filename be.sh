@@ -50,12 +50,12 @@ then
     useradd expense
     VALIDATE $? "add user"
 else
-    echo "user added already"
+    echo -e "user added already ...$Y skipping$N"
 fi
 #useradd expense &>>$LOG_FILE_NAME
 #VALIDATE $? "add user"
 
-mkdir /app &>>$LOG_FILE_NAME
+mkdir -p/app &>>$LOG_FILE_NAME
 VALIDATE $? "create app "
 
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$LOG_FILE_NAME

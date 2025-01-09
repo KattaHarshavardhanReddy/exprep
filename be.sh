@@ -59,7 +59,7 @@ VALIDATE $? "unzip file"
 npm install &>>$LOG_FILE_NAME
 VALIDATE $? "install npm"
 
-cp /home/ec2-user/exprep/be.services /etc/systemd/system/backend.service
+cp /home/ec2-user/exprep/be.service /etc/systemd/system/backend.service
 
 dnf install mysql -y &>>$LOG_FILE_NAME
 VALIDATE $? "Installing MySQL Client"

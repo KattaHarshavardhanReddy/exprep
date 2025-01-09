@@ -44,8 +44,16 @@ VALIDATE $? "enable new nodejs"
 dnf install nodejs -y &>>$LOG_FILE_NAME
 VALIDATE $? "install nodejs"
 
-useradd expense &>>$LOG_FILE_NAME
-VALIDATE $? "add user"
+id expense &>>$LOG_FILE_NAME
+if [ $? -ne 0 ]
+then
+    useradd expense
+    VALIDATE $? "add user"
+else
+    echo "user added already"
+fi
+#useradd expense &>>$LOG_FILE_NAME
+#VALIDATE $? "add user"
 
 mkdir /app &>>$LOG_FILE_NAME
 VALIDATE $? "create app "

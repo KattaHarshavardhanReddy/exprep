@@ -44,5 +44,13 @@ VALIDATE $? "enabling mysql"
 systemctl start mysqld &>>$LOG_FILE_NAME
 VALIDATE $? "starting mysql"
 
-mysql_secure_installation --set-root-pass ExpenseApp@1 
-VALIDATE $? " root pw"
+mysql -h mysql.katta.blog -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE_NAME
+
+if [ $? -ne 0 ]
+then
+    echo " root pw not setup"
+    mysql_secure_installation --set-root-pass ExpenseApp@1
+    VALIDATE $? " root pw"
+else
+    echo " root pw installed"
+fi
